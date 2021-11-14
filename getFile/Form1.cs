@@ -23,13 +23,12 @@ namespace getFile
         {
 
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Text files | *.txt"; // file types, that will be allowed to upload
-            dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
-            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
+            dialog.Filter = "Text files | *.txt"; 
+            dialog.Multiselect = false; 
+            if (dialog.ShowDialog() == DialogResult.OK) 
             {
-                String path = dialog.FileName; // get name of file
+                String path = dialog.FileName; 
                 FileReader fileReader = new FileReader(path);
-                //string[] result = new string[10]();
                 var lines = fileReader.Task1();
                 var words = fileReader.Task2();
                 var exclusiveWords = fileReader.Task3();

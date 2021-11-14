@@ -52,7 +52,7 @@ namespace getFile
             ProcessedText = Regex.Replace(ProcessedText, " a ", " ");
             ProcessedText = Regex.Replace(ProcessedText, " an ", " ");
             ProcessedText = Regex.Replace(ProcessedText, @"\s+", " ").Trim();
-            string[] forChange = new string[] { "?", ";", ",", ".", "!", "(", "\"","'",":",")" };
+            string[] forChange = new string[] { "?", ";", ",", ".", "!", "(", "\"","'", ":", ")", "-" };
             ProcessedText = forChange.Aggregate(ProcessedText, (c1, c2) => c1.Replace(c2, ""));
 
             String[] arr = ProcessedText.Split(' ');
@@ -185,10 +185,7 @@ namespace getFile
                     }
 
                 }
-                else
-                {
-
-                }
+               
                 
                 
 
@@ -246,7 +243,7 @@ namespace getFile
         //    if (key != "" && numberTable[key] >= 100)
         //    {
         //        int startIndex = 0;
-        //        int end = text.IndexOf(key);
+        //        int end = ProcessedText.IndexOf(key);
         //        String before;
         //        int z;
 
@@ -286,21 +283,23 @@ namespace getFile
         {
             string[] colors = Enum.GetNames(typeof(KnownColor));
             colors = colors.Select(c => c.ToLowerInvariant()).ToArray();
-            List<string> existColorsDictionery = new List<string>();
+            List<string> colorsList = new List<string>(colors);
+            colorsList.Sort();
+            List<string> existColorsList = new List<string>();
             foreach (var item in WordsArray)
             {
-                if (Array.Exists<string>(colors, element => element == item.Key))
+                if (colorsList.BinarySearch(item.Key) > -1)
                 {
-                    existColorsDictionery.Add(item.Key + ": " + item.Value);
+                    existColorsList.Add(item.Key + ": " + item.Value);
                 }
             }
-            return existColorsDictionery;
+            return existColorsList;
         }
 
 
         private bool IsSyntaxWord(string word)
         {
-            var arr = new String[] { "am", "are", "don't", "that", "the" ,"is","isn't","aren't","there","to", "amn't", "didn't", "was", "were", "wasn't", "weren't" };
+            var arr = new String[] { "am", "are", "don't", "that", "the" ,"is","isn't", "of", "aren't","there","to", "amn't", "and", "didn't", "was", "were", "wasn't", "weren't" };
             return arr.Contains(word);
         }
 
