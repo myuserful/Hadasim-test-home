@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\לימוד\\getFile\\getFile.csproj",
+      "projectUniqueName": "C:\\Users\\This_user\\Documents\\GitHub\\Hadasim-test-home\\getFile\\getFile.csproj",
       "projectName": "getFile",
-      "projectPath": "D:\\לימוד\\getFile\\getFile.csproj",
+      "projectPath": "C:\\Users\\This_user\\Documents\\GitHub\\Hadasim-test-home\\getFile\\getFile.csproj",
       "packagesPath": "C:\\Users\\This_user\\.nuget\\packages\\",
-      "outputPath": "D:\\לימוד\\getFile\\obj\\",
+      "outputPath": "C:\\Users\\This_user\\Documents\\GitHub\\Hadasim-test-home\\getFile\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

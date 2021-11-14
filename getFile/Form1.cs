@@ -28,10 +28,9 @@ namespace getFile
             if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
             {
                 String path = dialog.FileName; // get name of file
-                FileReader fileReader = new FileReader();
+                FileReader fileReader = new FileReader(path);
                 //string[] result = new string[10]();
-                var lines = fileReader.ReadFileAndTask1(path);
-                fileReader.SetParams();
+                var lines = fileReader.Task1();
                 var words = fileReader.Task2();
                 var exclusiveWords = fileReader.Task3();
                 var sentenceLength = fileReader.Task4();

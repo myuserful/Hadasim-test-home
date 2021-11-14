@@ -11,18 +11,42 @@ namespace getFile
 {
     class FileReader
     {
+        public int Lines { get; set; }
         public String Text { get; set; }
         public String ProcessedText { get; set; }
         public Dictionary<String, int> WordsArray { get; set; }
-        public String[] MainFunc(String path)
+
+        public FileReader(string path)
         {
-            String[] result = new string[7];
-            
+            Lines = 0;
+            String line;
+            try
+            {
+                StreamReader sr = new StreamReader(path);
+                line = sr.ReadLine();
 
-            return result;
+                while (line != null)
+                {
+                    if (line != "")
+                    {
+                        Lines++;
+                        Text = Text + " " + line;
+                    }
+                    line = sr.ReadLine();
+                }
+
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            Text = Regex.Replace(Text, @"\s+", " ");
+            SetParams();
         }
+        
 
-        public void SetParams()
+        private void SetParams()
         {
             ProcessedText = Text.ToLower();
             ProcessedText = Regex.Replace(ProcessedText, " a ", " ");
@@ -47,33 +71,9 @@ namespace getFile
             }
         }
 
-        public int ReadFileAndTask1(String path)
+        public int Task1()
         {
-            int numberRows = 0;
-            String line;
-            try
-            {
-                StreamReader sr = new StreamReader(path);
-                line = sr.ReadLine();
-
-                while (line != null)
-                {
-                    if (line != "")
-                    {
-                        numberRows++;
-                        Text = Text + " " + line;
-                    }
-                    line = sr.ReadLine();
-                }
-
-                sr.Close();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            Text = Regex.Replace(Text, @"\s+", " ");
-            return numberRows;
+            return Lines;
         }
 
         public int Task2()
@@ -93,6 +93,8 @@ namespace getFile
             var text = Text.ToLower();
             text = Regex.Replace(text, " a ", " ");
             text = Regex.Replace(text, " an ", " ");
+            string[] forChange = new string[] { "?", "!"};
+            ProcessedText = forChange.Aggregate(ProcessedText, (c1, c2) => c1.Replace(c2, "."));
             text = Regex.Replace(text, @"\s+", " ").Trim();
             var arr = text.Split(". ");
             double max = 0;
@@ -169,14 +171,22 @@ namespace getFile
                 if(startIndex != -1) {
                     startIndex = startIndex + l +1;
                     end = ProcessedText.Substring(startIndex).IndexOf('k') + 1;
-                    if(end == 0)
+                    if(end > 0)
                     {
-                        end = ProcessedText.Length - startIndex - 1;
+                        end = ProcessedText.Substring(startIndex, end).LastIndexOf(" ");
+                        if(end == -1)
+                        {
+                            end = 0;
+                        }
                     }
                     else
                     {
-                        end = ProcessedText.Substring(startIndex, end).LastIndexOf(" ");
+                        end = ProcessedText.Length - startIndex - 1;
                     }
+
+                }
+                else
+                {
 
                 }
                 
