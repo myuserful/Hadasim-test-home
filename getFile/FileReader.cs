@@ -93,7 +93,7 @@ namespace getFile
             var text = Text.ToLower();
             text = Regex.Replace(text, " a ", " ");
             text = Regex.Replace(text, " an ", " ");
-            string[] forChange = new string[] { "?", "!"};
+            string[] forChange = new string[] { "?", "!", "??", "!!"};
             ProcessedText = forChange.Aggregate(ProcessedText, (c1, c2) => c1.Replace(c2, "."));
             text = Regex.Replace(text, @"\s+", " ").Trim();
             var arr = text.Split(". ");

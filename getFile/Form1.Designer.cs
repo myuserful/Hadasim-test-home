@@ -32,11 +32,12 @@ namespace getFile
             this.btnSelectFile = new System.Windows.Forms.Button();
             this.resultTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSelectFile
             // 
-            this.btnSelectFile.Location = new System.Drawing.Point(586, 102);
+            this.btnSelectFile.Location = new System.Drawing.Point(586, 104);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(142, 35);
             this.btnSelectFile.TabIndex = 0;
@@ -62,17 +63,28 @@ namespace getFile
             this.label1.TabIndex = 2;
             this.label1.Text = "תוצאה:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(345, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "מונפלציות על קובץ";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.resultTextBox);
             this.Controls.Add(this.btnSelectFile);
             this.Name = "Form1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Text = "Form1";
+            this.Text = "מנחן בית הדסים";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +95,7 @@ namespace getFile
         private System.Windows.Forms.Button btnSelectFile;
         private System.Windows.Forms.TextBox resultTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
